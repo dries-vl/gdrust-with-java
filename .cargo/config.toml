@@ -1,0 +1,23 @@
+[build]
+target = "x86_64-pc-windows-msvc"
+
+[profile.dev]
+opt-level = 0
+panic = "unwind"        # abort instead of unwinding: required for using no_std
+strip = "none"
+lto = "off"
+codegen-units = 256
+incremental = true
+
+[profile.release]
+opt-level = 3           # 's' = small binary, 3 (default) = optimize for speed
+panic = "abort"
+strip = "symbols"
+lto = "thin"
+codegen-units = 1
+incremental = false
+
+# Compile build-dependencies in release mode with more optimized than default
+[profile.release.build-override]
+opt-level = 3
+codegen-units = 1

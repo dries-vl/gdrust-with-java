@@ -8,9 +8,13 @@
 extern "C" {
 #endif
 
-int run_main(int argc, char** argv);
+void load_countries(graal_isolatethread_t*);
 
-int filter_env(graal_isolatethread_t*, char*);
+size_t get_country(graal_isolatethread_t*, int);
+
+void update_country(graal_isolatethread_t*, int);
+
+int run_main(int argc, char** argv);
 
 #if defined(__cplusplus)
 }

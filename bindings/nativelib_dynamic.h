@@ -8,9 +8,13 @@
 extern "C" {
 #endif
 
-typedef int (*run_main_fn_t)(int argc, char** argv);
+typedef void (*load_countries_fn_t)(graal_isolatethread_t*);
 
-typedef int (*filter_env_fn_t)(graal_isolatethread_t*, char*);
+typedef size_t (*get_country_fn_t)(graal_isolatethread_t*, int);
+
+typedef void (*update_country_fn_t)(graal_isolatethread_t*, int);
+
+typedef int (*run_main_fn_t)(int argc, char** argv);
 
 #if defined(__cplusplus)
 }
